@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
+#include <stdlib.h>
 void main(){
 	int verif = 0;
 	struct Cliente{
@@ -17,6 +18,7 @@ void main(){
 		int loc_id, loc_cliId, loc_filId;
 		struct tm loc_data_locacao;
 	};
+	system("@cls||clear");
 	printf("==================================================\n");
 	printf("BEM VINDOS A LOCADORA 9/10 PORQUE NEM TUDO É PERFEITO\n");
 	printf("   A \n");
@@ -27,7 +29,6 @@ void main(){
 	printf("Feliz Natal e um ótimo ano novo!! Aceitamos nota de presente ou um vale refeição.\n");
 		
 	while(verif != 99){
-
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
 		printf("1 - Clientes;\n");
@@ -39,6 +40,7 @@ void main(){
 		switch(verif){
 			case 1:
 				while(verif != 99){
+					system("@cls||clear");
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar cliente;\n");
@@ -48,17 +50,21 @@ void main(){
 					scanf("%d", &verif);
 					switch(verif){
 						case 1:
-							
+						system("@cls||clear");
+
 						break;
 						case 2:
-							
+						system("@cls||clear");
+
 						break;
 						case 99:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Voltando...\n");
 							
 						break;
 						default:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Opção inválida, digite novamente!\n");
 							
@@ -69,6 +75,7 @@ void main(){
 			break;
 			case 2:
 				while(verif != 99){
+					system("@cls||clear");
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar filme;\n");
@@ -80,23 +87,29 @@ void main(){
 					scanf("%d", &verif);
 					switch(verif){
 						case 1:
-							
+						system("@cls||clear");
+
 						break;
 						case 2:
-							
+						system("@cls||clear");
+
 						break;
 						case 3:
-							
+						system("@cls||clear");
+
 						break;
 						case 4:
-						
+						system("@cls||clear");
+
 						break;
 						case 99:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Voltando...\n");	
 							
 						break;
 						default:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Opção inválida, digite novamente!\n");
 							
@@ -107,6 +120,7 @@ void main(){
 			break;
 			case 3:
 				while(verif != 99){
+					system("@cls||clear");
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Locar filme;\n");
@@ -119,6 +133,7 @@ void main(){
 							
 						break;
 						case 2:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Gerar PDF?\n");
 							printf("1 - Sim;\n");
@@ -130,11 +145,13 @@ void main(){
 							}
 						break;
 						case 99:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Voltando...\n");
 							
 						break;
 						default:
+							system("@cls||clear");
 							printf("==================================================\n");
 							printf("Opção inválida, digite novamente!\n");
 							
@@ -144,11 +161,13 @@ void main(){
 				verif = 0;
 			break;
 			case 99:
+				system("@cls||clear");
 				printf("==================================================\n");
 				printf("Saindo...\n");
 				printf("==================================================\n");
 			break;
 			default:
+				system("@cls||clear");
 				printf("==================================================\n");
 				printf("Opção inválida, digite novamente!\n");
 				
