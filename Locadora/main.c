@@ -4,20 +4,6 @@
 #include <stdlib.h>
 
 
-	struct Cliente{
-		int cli_id, cli_idade, cli_cpf;
-		char cli_nome[100], cli_endereco[500];
-	};
-
-	struct Filme{
-		int fil_id, fil_classificacao, fil_qtd_disponivel;
-		char fil_nome[500], fil_genero[100], fil_sinopses[3000];
-	};
-
-	struct Locacao{
-		int loc_id, loc_cliId, loc_filId;
-		struct tm loc_data_locacao;
-	};
 void main(){
 	int verif = 0;
 
@@ -54,6 +40,8 @@ void main(){
 					switch(verif){
 						case 1:
 						system("@cls||clear");
+						printf("Digite o nome do cliente");
+						
 
 						break;
 						case 2:
