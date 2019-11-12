@@ -3,9 +3,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 
+#include "funcs.h"
 
 void main(){
 	int verif = 0;
+	char val;
 
 	system("@cls||clear");
 	printf("==================================================\n");
@@ -26,10 +28,10 @@ void main(){
 		printf("99 - Sair;\n");
 		printf("==================================================\n");
 		scanf("%d", &verif);
+		system("@cls||clear");
 		switch(verif){
 			case 1:
 				while(verif != 99){
-					system("@cls||clear");
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar cliente;\n");
@@ -40,9 +42,24 @@ void main(){
 					switch(verif){
 						case 1:
 						system("@cls||clear");
-						printf("Digite o nome do cliente");
-						
-
+						struct Cliente cli;
+						printf("Digite o nome do cliente:\n");
+						scanf("%c", &val);
+						gets(cli.cli_nome);
+						system("@cls||clear");
+						printf("Digite o CPF (Somente números):\n");
+						scanf("%d", &cli.cli_cpf);
+						system("@cls||clear");
+						printf("Digite a idade:\n");
+						scanf("%d", &cli.cli_idade);
+						system("@cls||clear");
+						printf("Digite o endereço:\n");
+						gets(cli.cli_endereco);
+						system("@cls||clear");
+						cli.cli_id = sizeof(cli);
+						//printf("%d", cli.cli_id);
+						printf("==================================================\n");
+						printf("Cliente cadastrado com sucesso.\n");
 						break;
 						case 2:
 						system("@cls||clear");
@@ -66,7 +83,6 @@ void main(){
 			break;
 			case 2:
 				while(verif != 99){
-					system("@cls||clear");
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar filme;\n");
@@ -79,7 +95,24 @@ void main(){
 					switch(verif){
 						case 1:
 						system("@cls||clear");
-
+						struct Filme fil;
+						printf("Digite o nome do filme:\n");
+						scanf("%s", fil.fil_nome);
+						system("@cls||clear");
+						printf("Digite a classificação:\n");
+						scanf("%d", &fil.fil_classificacao);
+						system("@cls||clear");
+						printf("Digite o gênero:\n");
+						scanf("%s", fil.fil_genero);
+						system("@cls||clear");
+						printf("Digite a sinopses:\n");
+						scanf("%s", fil.fil_sinopses);
+						system("@cls||clear");
+						printf("Digite a quantidade disponível:\n");
+						scanf("%d", &fil.fil_qtd_disponivel);
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Filme cadastrado com sucesso.\n");
 						break;
 						case 2:
 						system("@cls||clear");
