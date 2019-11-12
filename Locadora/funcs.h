@@ -14,3 +14,11 @@
 		int loc_id, loc_cliId, loc_filId;
 		struct tm loc_data_locacao;
 	};
+
+	void writeFilmes(struct filme *f);
+
+	void writeClientes(struct cliente *c);
+
+	void loadFilmes(struct filme *f);
+
+	void loadClientes(struct cliente *c);

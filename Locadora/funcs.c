@@ -40,3 +40,35 @@ void loadFilmes(struct filme *f)
     read(red, f, sizeof(struct filme) * 1000);
     close(red);
 }
+
+void writeClientes(struct cliente *c)
+{
+
+    int red;
+    red = open("Banco/Clientes.txt", O_RDWR|O_CREAT, 0666);
+
+    printf("%d\n",red);
+
+        if(red < 0){
+            printf("ERROR\n");
+        }
+
+    write(red, c, sizeof(struct cliente) * 1000);
+    close(red);
+}
+
+void writeFilmes(struct filme *f)
+{
+
+    int red;
+    red = open("Banco/Filmes.txt", O_RDWR|O_CREAT, 0666);
+
+    printf("%d\n",red);
+
+        if(red < 0){
+            printf("ERROR\n");
+        }
+
+    write(red, f, sizeof(struct filme) * 1000);
+    close(red);
+}
