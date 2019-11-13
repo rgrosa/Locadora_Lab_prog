@@ -1,8 +1,8 @@
    #include <time.h>
     
     struct cliente{
-		int cli_id, cli_idade, cli_cpf;
-		char cli_nome[100], cli_endereco[500];
+		int cli_id,cli_idade,cli_cpf;
+		char cli_nome[100],cli_endereco[500];
 	};
 
 	struct filme{
@@ -15,12 +15,13 @@
 		struct tm loc_data_locacao;
 	};
 struct filme fl[100];
+struct cliente cl[100];
 	void writeFilmes(void);
 
-	void writeClientes(struct cliente *c);
+	void writeClientes();
 
 	void loadFilmes(void);
 
-	void loadClientes(struct cliente *c);
-	void teste(void);
+	void loadClientes();
+	
 	

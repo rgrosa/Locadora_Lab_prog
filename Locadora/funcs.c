@@ -9,21 +9,22 @@
 #include "funcs.h"
     
 
-void loadClientes(struct cliente *c)
+void loadClientes()
 {
 
     int red;
-    red = open("Banco/Clientes.txt", O_RDWR|O_CREAT, 0666);
+    red = open("BancoC.txt", O_RDWR|O_CREAT, 0666);
 
-    printf("%d\n",red);
+   
 
         if(red < 0){
             printf("ERROR\n");
         }
 
-    read(red, c, sizeof(struct cliente) * 1000);
+    read(red, &cl, sizeof(struct cliente) * 1000);
     close(red);
 }
+
 
 void loadFilmes()
 {
@@ -41,20 +42,22 @@ void loadFilmes()
     close(red);
 }
 
-void writeClientes(struct cliente *c)
+void writeClientes(void)
 {
 
     int red;
-    red = open("Banco/Clientes.txt", O_RDWR|O_CREAT, 0666);
+    red = open("BancoC.txt", O_RDWR|O_CREAT, 0666);
 
- 
+   
 
         if(red < 0){
             printf("ERROR\n");
         }
 
-    write(red, c, sizeof(struct cliente) * 1000);
+    write(red,&cl, sizeof(struct cliente) * 1000);
     close(red);
+
+    printf("SUCESSO");
 }
 
 void writeFilmes(void)

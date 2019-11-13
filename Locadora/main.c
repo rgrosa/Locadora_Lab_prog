@@ -43,8 +43,33 @@ loadFilmes();
 					switch(verif){
 						case 1:
 					
+for(i=0; i<100;i++){
+
+if (fl[i].fil_id== 0) {
+
+
+					printf("Digite o nome do cliente: ");
+				   		fflush(stdin);
+				 		getchar();
+							fgets(cl[i].cli_nome, 40, stdin);
+						system("@cls||clear");
+				
+					printf("Digite o endereço do cliente: ");
+				   		fflush(stdin);
+				 		getchar();
+							fgets(cl[i].cli_endereco, 40, stdin);
+					printf("Digite o ID do cliente: ");
+						scanf("%d",&cl[i].cli_id);
+
+					printf("Digite CPF do cliente (SOMENTE NUMEROS): ");
+						scanf("%d",&cl[i].cli_cpf);
+					printf("Digite a idade do cliente: ");
+						scanf("%d",&cl[i].cli_idade);		
+					writeClientes();
+i=101;
 					
-						
+					}
+}
 						
 						printf("==================================================\n");
 						printf("Cliente cadastrado com sucesso.\n");
@@ -52,7 +77,7 @@ loadFilmes();
 						case 2:
 
 										
-writeFilmes();
+
 
 						break;
 						
@@ -107,11 +132,11 @@ if (fl[i].fil_id== 0) {
 				   		fflush(stdin);
 				 		getchar();
 							fgets(fl[i].fil_sinopses, 40, stdin);
-printf("Digite o ID do filme: ");
-scanf("%d",&fl[i].fil_id);
+					printf("Digite o ID do filme: ");
+						scanf("%d",&fl[i].fil_id);
 
-printf("Digite a quantidade disponivel em estoque: ");
-scanf("%d",&fl[i].fil_qtd_disponivel);
+					printf("Digite a quantidade disponivel em estoque: ");
+						scanf("%d",&fl[i].fil_qtd_disponivel);
 							
 					writeFilmes();
 i=101;
