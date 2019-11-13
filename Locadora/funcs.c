@@ -25,19 +25,19 @@ void loadClientes(struct cliente *c)
     close(red);
 }
 
-void loadFilmes(struct filme *f)
+void loadFilmes()
 {
 
     int red;
-    red = open("Banco/Filmes.txt", O_RDWR|O_CREAT, 0666);
+    red = open("BancoF.txt", O_RDWR|O_CREAT, 0666);
 
-    printf("%d\n",red);
+   
 
         if(red < 0){
             printf("ERROR\n");
         }
 
-    read(red, f, sizeof(struct filme) * 1000);
+    read(red, &fl, sizeof(struct filme) * 1000);
     close(red);
 }
 
@@ -47,7 +47,7 @@ void writeClientes(struct cliente *c)
     int red;
     red = open("Banco/Clientes.txt", O_RDWR|O_CREAT, 0666);
 
-    printf("%d\n",red);
+ 
 
         if(red < 0){
             printf("ERROR\n");
@@ -57,18 +57,28 @@ void writeClientes(struct cliente *c)
     close(red);
 }
 
-void writeFilmes(struct filme *f)
+void writeFilmes(void)
 {
 
     int red;
-    red = open("Banco/Filmes.txt", O_RDWR|O_CREAT, 0666);
+    red = open("BancoF.txt", O_RDWR|O_CREAT, 0666);
 
-    printf("%d\n",red);
+   
 
         if(red < 0){
             printf("ERROR\n");
         }
 
-    write(red, f, sizeof(struct filme) * 1000);
+    write(red,&fl, sizeof(struct filme) * 1000);
     close(red);
+
+    printf("SUCESSO");
 }
+ 
+
+ void teste(void){
+
+
+printf("AAAAAAAAJJJJJJJJJJJJznznznz\n\n\n\n");
+
+ }
