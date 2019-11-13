@@ -36,7 +36,7 @@ loadFilmes();
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar cliente;\n");
-					printf("2 - Editar cliente(SETA ID);\n");
+					printf("2 - Editar cliente;\n");
 					printf("99 - Voltar;\n");
 					printf("==================================================\n");
 					scanf("%d", &verif);
@@ -51,7 +51,7 @@ loadFilmes();
 						break;
 						case 2:
 
-											setaID();
+										
 writeFilmes();
 
 						break;
@@ -97,18 +97,21 @@ for(i=0; i<100;i++){
 if (fl[i].fil_id== 0) {
 
 
-					printf("Digite o nome do filme:");
+					printf("Digite o nome do filme: ");
 				   		fflush(stdin);
 				 		getchar();
 							fgets(fl[i].fil_nome, 40, stdin);
 						system("@cls||clear");
 				
-					printf("Digite a sinopse do filme:");
+					printf("Digite a sinopse do filme: ");
 				   		fflush(stdin);
 				 		getchar();
 							fgets(fl[i].fil_sinopses, 40, stdin);
-printf("Digite o ID do filme");
+printf("Digite o ID do filme: ");
 scanf("%d",&fl[i].fil_id);
+
+printf("Digite a quantidade disponivel em estoque: ");
+scanf("%d",&fl[i].fil_qtd_disponivel);
 							
 					writeFilmes();
 i=101;
@@ -136,19 +139,19 @@ i=101;
 						break;
 						case 4:
 						system("@cls||clear");
-for(i=0; i<50;i++){
+for(i=0; i<100;i++){
 
 if (fl[i].fil_id!=0){
 
 
-printf("CADASTRO %d\n", i);
+printf("CADASTRO %d\n", i+1);
 printf("Nome do FILME %s", fl[i].fil_nome);
 printf("SINOPSE: %s", fl[i].fil_sinopses);
-printf("ID: %d\n\n", fl[i].fil_id);
-						
+printf("ID: %d\n", fl[i].fil_id);
+printf("Quantidade Disponivel em estoque: %d\n\n", fl[i].fil_qtd_disponivel);				
 
-}
-}
+
+}}
 
 						break;
 						case 99:

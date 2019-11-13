@@ -75,12 +75,3 @@ void writeFilmes(void)
     printf("SUCESSO");
 }
  
-
- void setaID(void)
- {
-int i;
-for (i=0;i<100;i++){
-fl[i].fil_id=0;
-
-}
- }

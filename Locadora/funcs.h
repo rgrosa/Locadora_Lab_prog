@@ -23,4 +23,4 @@ struct filme fl[100];
 
 	void loadClientes(struct cliente *c);
 	void teste(void);
-	void setaID(void);
+	
