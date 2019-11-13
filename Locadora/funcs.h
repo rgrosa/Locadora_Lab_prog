@@ -14,7 +14,7 @@
 		int loc_id, loc_cliId, loc_filId;
 		struct tm loc_data_locacao;
 	};
-struct filme fl[10];
+struct filme fl[100];
 	void writeFilmes(void);
 
 	void writeClientes(struct cliente *c);
@@ -23,3 +23,4 @@ struct filme fl[10];
 
 	void loadClientes(struct cliente *c);
 	void teste(void);
+	void setaID(void);

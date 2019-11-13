@@ -7,6 +7,7 @@
 void main(){
 	int verif = 0;
 	char val;
+	int i,j;
 loadFilmes();
 	system("@cls||clear");
 	printf("==================================================\n");
@@ -24,6 +25,7 @@ loadFilmes();
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
 		printf("3 - Locação;\n");
+	
 		printf("99 - Sair;\n");
 		printf("==================================================\n");
 		scanf("%d", &verif);
@@ -34,7 +36,7 @@ loadFilmes();
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar cliente;\n");
-					printf("2 - Editar cliente(TESTE IMPRIMI);\n");
+					printf("2 - Editar cliente(SETA ID);\n");
 					printf("99 - Voltar;\n");
 					printf("==================================================\n");
 					scanf("%d", &verif);
@@ -49,9 +51,14 @@ loadFilmes();
 						break;
 						case 2:
 
-						
+											setaID();
+writeFilmes();
 
 						break;
+						
+
+	
+						
 						case 99:
 							system("@cls||clear");
 							printf("==================================================\n");
@@ -83,30 +90,41 @@ loadFilmes();
 					scanf("%d", &verif);
 					switch(verif){
 						case 1:
-						system("@cls||clear");
+						
+
+for(i=0; i<100;i++){
+
+if (fl[i].fil_id== 0) {
+
+
 					printf("Digite o nome do filme:");
 				   		fflush(stdin);
 				 		getchar();
-							fgets(fl[0].fil_nome, 40, stdin);
+							fgets(fl[i].fil_nome, 40, stdin);
 						system("@cls||clear");
 				
 					printf("Digite a sinopse do filme:");
 				   		fflush(stdin);
 				 		getchar();
-							fgets(fl[0].fil_sinopses, 40, stdin);
+							fgets(fl[i].fil_sinopses, 40, stdin);
 printf("Digite o ID do filme");
-scanf("%d",&fl[0].fil_id);
+scanf("%d",&fl[i].fil_id);
 							
 					writeFilmes();
-						
-
-
-
-
-
-
+i=101;
 						printf("==================================================\n");
 						printf("Filme cadastrado com sucesso.\n");
+
+}else{
+
+
+}
+}
+
+
+
+
+
 						break;
 						case 2:
 						system("@cls||clear");
@@ -118,10 +136,20 @@ scanf("%d",&fl[0].fil_id);
 						break;
 						case 4:
 						system("@cls||clear");
-printf(" %s", fl[0].fil_nome);
-printf(" %s", fl[0].fil_sinopses);
-printf(" %d", fl[0].fil_id);
+for(i=0; i<50;i++){
+
+if (fl[i].fil_id!=0){
+
+
+printf("CADASTRO %d\n", i);
+printf("Nome do FILME %s", fl[i].fil_nome);
+printf("SINOPSE: %s", fl[i].fil_sinopses);
+printf("ID: %d\n\n", fl[i].fil_id);
 						
+
+}
+}
+
 						break;
 						case 99:
 							system("@cls||clear");

@@ -76,9 +76,11 @@ void writeFilmes(void)
 }
  
 
- void teste(void){
+ void setaID(void)
+ {
+int i;
+for (i=0;i<100;i++){
+fl[i].fil_id=0;
 
-
-printf("AAAAAAAAJJJJJJJJJJJJznznznz\n\n\n\n");
-
+}
  }
