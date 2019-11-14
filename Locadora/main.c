@@ -3,13 +3,17 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "funcs.h"
-
+#include <string.h>
 void main(){
 	int verif = 0;
 	char val;
 	int i,j;
+	char txc[10];
+	
 loadFilmes();
 	system("@cls||clear");
+	
+
 	printf("==================================================\n");
 	printf("BEM VINDOS A LOCADORA 9/10 PORQUE NEM TUDO É PERFEITO\n");
 	printf("   A \n");
@@ -24,8 +28,7 @@ loadFilmes();
 		printf("Escolha uma opção:\n");
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
-		printf("3 - Locação;\n");
-	
+		printf("3 - Locação(BUSCA);\n");
 		printf("99 - Sair;\n");
 		printf("==================================================\n");
 		scanf("%d", &verif);
@@ -160,7 +163,9 @@ i=101;
 						break;
 						case 3:
 						system("@cls||clear");
-
+printf("digite o para busca ");
+scanf("%s", txc);
+buscaF(txc);
 						break;
 						case 4:
 						system("@cls||clear");
