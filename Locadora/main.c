@@ -41,6 +41,7 @@ loadFilmes();
 			case 1:
 		
 				while(verif != 99){
+				
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar cliente;\n");
@@ -144,9 +145,13 @@ if (cl[i].cli_id== 0) {
 
 						break;
 						case 3:
+						system("@cls||clear");
+						printf("digite o para busca ");
+						scanf("%s", txc);
+						buscaC(txc);
 						break;
 						case 4:
-loadClientes();
+
 for(i=1; i<100;i++){
 
 if (cl[i].cli_id!=0){
