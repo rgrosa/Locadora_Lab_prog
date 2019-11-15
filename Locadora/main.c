@@ -66,13 +66,13 @@ if (cl[i].cli_id== 0) {
 					printf("Digite o endereço do cliente: ");
 				   		fflush(stdin);
 				 		getchar();
-						fgets(cl[i].cli_endereco, 40, stdin);
+						fgets(cl[i].cli_endereco, 80, stdin);
 				
 						cl[i].cli_id=i;
 					printf("Digite CPF do cliente (SOMENTE NUMEROS): ");
-						scanf("%d",&cl[i].cli_cpf);
+						scanf("%ld",&cl[i].cli_cpf);
 					printf("Digite a idade do cliente: ");
-						scanf("%d",&cl[i].cli_idade);		
+						scanf("%ld",&cl[i].cli_idade);		
 		
 						writeClientes();
 					i=101;	
@@ -154,10 +154,10 @@ if (cl[i].cli_id!=0){
 
 								printf("==================================================\n");
 							printf("CLIENTE: %s", cl[i].cli_nome);
-							printf("ID: %d\n", cl[i].cli_id);
-							printf("CPF: %d\n", cl[i].cli_cpf);	
+							printf("ID: %ld\n", cl[i].cli_id);
+							printf("CPF: %ld\n", cl[i].cli_cpf);	
 							printf("ENDEREÇO: %s", cl[i].cli_endereco);
-							printf("CPF: %d\n\n", cl[i].cli_idade);				
+							printf("IDADE: %ld\n\n", cl[i].cli_idade);				
 								printf("==================================================\n");
 
 }}

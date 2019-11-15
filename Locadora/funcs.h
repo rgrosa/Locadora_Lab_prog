@@ -1,7 +1,7 @@
    #include <time.h>
     #include <string.h>
     struct cliente{
-		int cli_id,cli_idade,cli_cpf;
+		long int cli_id,cli_idade,cli_cpf;
 		char cli_nome[100],cli_endereco[500];
 	};
 

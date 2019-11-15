@@ -15,8 +15,8 @@ void printC(int idc){
  
   idc--;
 printf("\n\nNome do CLIENTE %s", cl[idc].cli_nome);
-printf("ID: %d\n", cl[idc].cli_id);
-printf("CPF: %d\n\n", cl[idc].cli_cpf);
+printf("ID: %ld\n", cl[idc].cli_id);
+printf("CPF: %ld\n\n", cl[idc].cli_cpf);
 printf("ENDEREÇO: %s", cl[idc].cli_endereco);
 
 
@@ -39,7 +39,7 @@ int j=0;
         if(psResultado!= NULL){
 
             printf("NOME: %s", cl[i].cli_nome);
-            printf("ID: %d\n\n", cl[i].cli_id);
+            printf("ID: %ld\n\n", cl[i].cli_id);
 
 j++;
  }     else {}}
@@ -108,11 +108,11 @@ else{
 
    
 
-    printf("CPF: %d para -> \n",cl[idc].cli_cpf);
-        scanf("%d",&cl[idc].cli_cpf);
+    printf("CPF: %ld para -> \n",cl[idc].cli_cpf);
+        scanf("%ld",&cl[idc].cli_cpf);
 
-                printf("IDADE: %d para -> ",cl[idc].cli_idade);
-						scanf("%d",&cl[idc].cli_idade);		
+                printf("IDADE: %ld para -> ",cl[idc].cli_idade);
+						scanf("%ld",&cl[idc].cli_idade);		
               writeClientes();
 }}
 
