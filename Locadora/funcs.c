@@ -13,7 +13,7 @@
 
 void printC(int idc){
  
-  idc--;
+  
 printf("\n\nNome do CLIENTE %s", cl[idc].cli_nome);
 printf("ID: %ld\n", cl[idc].cli_id);
 printf("CPF: %ld\n\n", cl[idc].cli_cpf);
@@ -70,7 +70,7 @@ printf("\nID não encontrado!\n\n");
 
 void printF(int idf){
  
-  idf--;
+
 printf("\n\nNome do FILME %s", fl[idf].fil_nome);
 printf("ID: %d\n", fl[idf].fil_id);
 printf("SINOPSE: %s", fl[idf].fil_sinopses);
