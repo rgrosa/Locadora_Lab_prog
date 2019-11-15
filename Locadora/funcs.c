@@ -8,6 +8,117 @@
 #include "funcs.h"
     #include <string.h>
 
+
+
+
+void printC(int idc){
+ 
+  idc--;
+printf("\n\nNome do CLIENTE %s", cl[idc].cli_nome);
+printf("ID: %d\n", cl[idc].cli_id);
+printf("CPF: %d\n\n", cl[idc].cli_cpf);
+printf("ENDEREÇO: %s", cl[idc].cli_endereco);
+
+
+
+}
+
+
+int buscaC(char busc[]){
+
+
+
+int i, item;
+int j=0;
+
+   char *psResultado;
+
+ for(i=0; i<100; i++){
+   psResultado = strstr(cl[i].cli_nome, busc);
+
+        if(psResultado!= NULL){
+
+            printf("NOME: %s", cl[i].cli_nome);
+            printf("ID: %d\n\n", cl[i].cli_id);
+
+j++;
+ }     else {}}
+   if(j==0){printf("\n\nNENHUM ITEM ENCONTRADO\n\n");
+   
+                         return 0;
+   
+   }else{printf("\n\nFORAM ENCONTRADOS %d ITEN(S) CORRESPONDENTE(S)\n\n", j);
+   
+   
+   printf("\nDIGITE O ID CORRESPONDENTE A O ITEM PROCURADO\n");
+   scanf("%d", &item);
+   if(cl[item].cli_id==0){
+
+printf("\nID não encontrado!\n\n");
+ return 0;
+   }else{
+
+ printC(item);
+
+   }
+   
+   }
+  
+                         return item;
+}
+
+
+void printF(int idf){
+ 
+  idf--;
+printf("\n\nNome do FILME %s", fl[idf].fil_nome);
+printf("ID: %d\n", fl[idf].fil_id);
+printf("SINOPSE: %s", fl[idf].fil_sinopses);
+printf("Quantidade Disponivel em estoque: %d\n\n", fl[idf].fil_qtd_disponivel);
+
+
+}
+
+
+
+void editC(int idc){
+
+   
+  
+if (cl[idc].cli_id==0){
+
+
+    printf("\n\nID INEXISTENTE\n\n");
+}
+else{
+
+
+
+    printf("############EDITAR############\n");
+
+    printf("\n\nNome do CLIENTE %s editar para -> ", cl[idc].cli_nome);
+        fflush(stdin);
+		getchar();
+	    fgets(cl[idc].cli_nome, 40, stdin);
+
+    printf("ENDEREÇO: %s editar para -> ", cl[idc].cli_endereco);
+        fflush(stdin);
+		getchar();
+		fgets(cl[idc].cli_endereco, 40, stdin);
+
+   
+
+    printf("CPF: %d para -> \n",cl[idc].cli_cpf);
+        scanf("%d",&cl[idc].cli_cpf);
+
+                printf("IDADE: %d para -> ",cl[idc].cli_idade);
+						scanf("%d",&cl[idc].cli_idade);		
+              writeClientes();
+}}
+
+
+
+
 void editF(int idf){
 
    
@@ -35,21 +146,12 @@ else{
 
    
 
-    printf("Quantidade Disponivel em estoque: %d para -> \n\n", fl[idf].fil_qtd_disponivel);
+    printf("Quantidade Disponivel em estoque: %d para -> \n", fl[idf].fil_qtd_disponivel);
         scanf("%d",&fl[idf].fil_qtd_disponivel);
                 
                  writeFilmes();
 }}
-void printF(int idf){
- 
-  idf--;
-printf("\n\nNome do FILME %s", fl[idf].fil_nome);
-printf("ID: %d\n", fl[idf].fil_id);
-printf("SINOPSE: %s", fl[idf].fil_sinopses);
-printf("Quantidade Disponivel em estoque: %d\n\n", fl[idf].fil_qtd_disponivel);
 
-
-}
 
 
 
@@ -83,11 +185,19 @@ j++;
    
    printf("\nDIGITE O ID CORRESPONDENTE A O ITEM PROCURADO\n");
    scanf("%d", &item);
-   
+   if(fl[item].fil_id==0){
+
+printf("\nID não encontrado!\n\n");
+ return 0;
+   }else{
+
+ printF(item);
+
+   }
    
    }
-   printF(item);
-                         return 0;
+  
+                         return item;
 }
 
 

@@ -11,9 +11,11 @@ void main(){
 	int i,j,id;
 	char txc[10];
 
+
 loadFilmes();
 	system("@cls||clear");
-	
+
+	loadClientes();	
 
 	printf("==================================================\n");
 	printf("BEM VINDOS A LOCADORA 9/10 PORQUE NEM TUDO É PERFEITO\n");
@@ -37,11 +39,14 @@ loadFilmes();
 		system("@cls||clear");
 		switch(verif){
 			case 1:
+		
 				while(verif != 99){
 					printf("==================================================\n");
 					printf("Escolha uma opção:\n");
 					printf("1 - Cadastrar cliente;\n");
 					printf("2 - Editar cliente;\n");
+					printf("3 - Procurar cliente;\n");
+					printf("4 - Consultar informações;\n");
 					printf("99 - Voltar;\n");
 					printf("==================================================\n");
 					scanf("%d", &verif);
@@ -50,40 +55,117 @@ loadFilmes();
 					
 for(i=1; i<100;i++){
 
-if (fl[i].fil_id== 0) {
+if (cl[i].cli_id== 0) {
 
 
 					printf("Digite o nome do cliente: ");
 				   		fflush(stdin);
 				 		getchar();
 						fgets(cl[i].cli_nome, 40, stdin);
-						system("@cls||clear");
+					
 					printf("Digite o endereço do cliente: ");
 				   		fflush(stdin);
 				 		getchar();
 						fgets(cl[i].cli_endereco, 40, stdin);
-					printf("Digite o ID do cliente: ");
-						scanf("%d",&cl[i].cli_id);
+				
+						cl[i].cli_id=i;
 					printf("Digite CPF do cliente (SOMENTE NUMEROS): ");
 						scanf("%d",&cl[i].cli_cpf);
 					printf("Digite a idade do cliente: ");
 						scanf("%d",&cl[i].cli_idade);		
+		
 						writeClientes();
-i=101;
+					i=101;	
+						
+							}}
+
+						
 					
-					}
-}
 						
 						printf("==================================================\n");
 						printf("Cliente cadastrado com sucesso.\n");
 						break;
 						case 2:
 
-										
+								while(verif != 99){
+						verif = 0;
+						
+						printf("==================================================\n");
+						printf("Digite 1 para informar o ID do cliente a ser editado\n");
+						printf("Digite 2 para pesquisar cliente para iditar\n");
+						printf("Digite 99 para voltar\n");
+						printf("==================================================\n");
+						scanf("%d", &verif);
+					switch(verif){
+							case 1:
+						
+						printf("Digite numero do ID do cliente\n");
+						scanf("%d", &id);
+						editC(id);
+
+
+							break;
+							case 2:
+							j=0;
+								printf("digite o para busca ");
+						scanf("%s", txc);
+						j=buscaC(txc);
+						if(j!=0){
+
+							editC(j);
+						}
+						
+						
+							break;
+					case 99:
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Voltando...\n");
+							
+					break;
+				default:
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Opção inválida, digite novamente!\n");
+							
+							break;
+					
+					
+					
+					}
+							
+							
+							
+							}
+						
+
+					
 
 
 						break;
-						
+						case 3:
+						break;
+						case 4:
+loadClientes();
+for(i=1; i<100;i++){
+
+if (cl[i].cli_id!=0){
+
+
+								printf("==================================================\n");
+							printf("CLIENTE: %s", cl[i].cli_nome);
+							printf("ID: %d\n", cl[i].cli_id);
+							printf("CPF: %d\n", cl[i].cli_cpf);	
+							printf("ENDEREÇO: %s", cl[i].cli_endereco);
+							printf("CPF: %d\n\n", cl[i].cli_idade);				
+								printf("==================================================\n");
+
+}}
+
+
+
+
+						break;
 
 	
 						
@@ -129,7 +211,7 @@ if (fl[i].fil_id== 0) {
 				   	fflush(stdin);
 				 	getchar();
 					fgets(fl[i].fil_nome, 40, stdin);
-					system("@cls||clear");
+				
 					printf("Digite a sinopse do filme: ");
 					fflush(stdin);
 				 	getchar();
@@ -169,6 +251,16 @@ if (fl[i].fil_id== 0) {
 
 							break;
 							case 2:
+							j=0;
+								printf("digite o para busca ");
+						scanf("%s", txc);
+						j=buscaF(txc);
+						if(j!=0){
+
+							editF(j);
+						}
+						
+						
 							break;
 					case 99:
 						system("@cls||clear");
@@ -207,7 +299,7 @@ if (fl[i].fil_id!=0){
 
 
 								printf("==================================================\n");
-							printf("Nome do FILME %s\n", fl[i].fil_nome);
+							printf("Nome do FILME %s", fl[i].fil_nome);
 							printf("ID: %d\n", fl[i].fil_id);
 							printf("SINOPSE: %s", fl[i].fil_sinopses);
 							printf("Quantidade Disponivel em estoque: %d\n\n", fl[i].fil_qtd_disponivel);				

@@ -18,11 +18,12 @@ struct filme fl[100];
 struct cliente cl[100];
 	void writeFilmes(void);
 
-	void writeClientes();
+	void writeClientes(void);
 
 	void loadFilmes(void);
 
-	void loadClientes();
-	
+	void loadClientes(void);
+	int buscaC(char busc[]);
 	int buscaF(char busc[]);
 	void editF(int idf);
+	void editC(int idc);
