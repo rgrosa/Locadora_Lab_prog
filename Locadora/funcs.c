@@ -13,13 +13,12 @@
 
 void printC(int idc){
  
-  
-printf("\n\nNome do CLIENTE %s", cl[idc].cli_nome);
+printf("\n");
+printf("=====Dados do cliente=====\n");  
+printf("CLIENTE: %s", cl[idc].cli_nome);
 printf("ID: %ld\n", cl[idc].cli_id);
-printf("CPF: %ld\n\n", cl[idc].cli_cpf);
-printf("ENDEREÇO: %s", cl[idc].cli_endereco);
-
-
+printf("CPF: %ld\n", cl[idc].cli_cpf);
+printf("ENDEREÇO: %s\n", cl[idc].cli_endereco);
 
 }
 
@@ -40,17 +39,17 @@ int j=0;
 
             printf("NOME: %s", cl[i].cli_nome);
             printf("ID: %ld\n\n", cl[i].cli_id);
-
+	    
 j++;
  }     else {}}
    if(j==0){printf("\n\nNENHUM ITEM ENCONTRADO\n\n");
    
                          return 0;
    
-   }else{printf("\n\nFORAM ENCONTRADOS %d ITEN(S) CORRESPONDENTE(S)\n\n", j);
+   }else{printf("\n\nFORAM ENCONTRADOS %d ITEN(S) CORRESPONDENTE(S)", j);
    
    
-   printf("\nDIGITE O ID CORRESPONDENTE A O ITEM PROCURADO\n");
+   printf("\n\nDIGITE O ID CORRESPONDENTE A O ITEM PROCURADO: ");
    scanf("%d", &item);
    if(cl[item].cli_id==0){
 
@@ -70,12 +69,12 @@ printf("\nID não encontrado!\n\n");
 
 void printF(int idf){
  
-
-printf("\n\nNome do FILME %s", fl[idf].fil_nome);
+printf("\n");
+printf("=====Dados do filme=====\n"); 
+printf("FILME: %s", fl[idf].fil_nome);
 printf("ID: %d\n", fl[idf].fil_id);
 printf("SINOPSE: %s", fl[idf].fil_sinopses);
 printf("Quantidade Disponivel em estoque: %d\n\n", fl[idf].fil_qtd_disponivel);
-
 
 }
 
@@ -93,25 +92,29 @@ if (cl[idc].cli_id==0){
 else{
 
 
+    printf("\n");
+    printf("############EDITAR############");
 
-    printf("############EDITAR############\n");
-
-    printf("\n\nNome do CLIENTE %s editar para -> ", cl[idc].cli_nome);
+    printf("\n\nNome do cliente: %s", cl[idc].cli_nome);
+    printf("Editar para: ");
         fflush(stdin);
 		getchar();
 	    fgets(cl[idc].cli_nome, 40, stdin);
 
-    printf("ENDEREÇO: %s editar para -> ", cl[idc].cli_endereco);
+    printf("ENDEREÇO: %s", cl[idc].cli_endereco);
+    printf("Editar para: ");
         fflush(stdin);
 		getchar();
 		fgets(cl[idc].cli_endereco, 40, stdin);
 
    
 
-    printf("CPF: %ld para -> \n",cl[idc].cli_cpf);
+    printf("CPF: %ld\n",cl[idc].cli_cpf);
+    printf("Editar para: ");
         scanf("%ld",&cl[idc].cli_cpf);
 
-                printf("IDADE: %ld para -> ",cl[idc].cli_idade);
+                printf("IDADE: %ld\n",cl[idc].cli_idade);
+                printf("Editar para: ");
 						scanf("%ld",&cl[idc].cli_idade);		
               writeClientes();
 }}
@@ -131,22 +134,25 @@ if (fl[idf].fil_id==0){
 else{
 
 
+    printf("\n");
+    printf("############EDITAR############");
 
-    printf("############EDITAR############\n");
-
-    printf("\n\nNome do FILME %s editar para -> ", fl[idf].fil_nome);
+    printf("\n\nFILME: %s", fl[idf].fil_nome);
+    printf("Editar para: ");
         fflush(stdin);
 		getchar();
 	    fgets(fl[idf].fil_nome, 40, stdin);
 
-    printf("SINOPSE: %s editar para -> ", fl[idf].fil_sinopses);
+    printf("SINOPSE: %s", fl[idf].fil_sinopses);
+    printf("Editar para: ");
         fflush(stdin);
 		getchar();
 		fgets(fl[idf].fil_sinopses, 1000, stdin);
 
    
 
-    printf("Quantidade Disponivel em estoque: %d para -> \n", fl[idf].fil_qtd_disponivel);
+    printf("Quantidade Disponivel em estoque: %d\n", fl[idf].fil_qtd_disponivel);
+    printf("Editar para: ");
         scanf("%d",&fl[idf].fil_qtd_disponivel);
                 
                  writeFilmes();
@@ -180,10 +186,10 @@ j++;
    
                          return 0;
    
-   }else{printf("\n\nFORAM ENCONTRADOS %d ITEN(S) CORRESPONDENTE(S)\n\n", j);
+   }else{printf("\n\nFORAM ENCONTRADOS %d ITEN(S) CORRESPONDENTE(S)", j);
    
    
-   printf("\nDIGITE O ID CORRESPONDENTE A O ITEM PROCURADO\n");
+   printf("\n\nDIGITE O ID CORRESPONDENTE A O ITEM PROCURADO: ");
    scanf("%d", &item);
    if(fl[item].fil_id==0){
 

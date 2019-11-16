@@ -21,12 +21,11 @@ loadFilmes();
 	printf("BEM VINDOS A LOCADORA 9/10 PORQUE NEM TUDO É PERFEITO\n");
 	printf("   A \n");
 	printf("  *** \n");
-	printf(" *o*o* \n");
-	printf("*o***o* \n");
+	printf(" ***** \n");
+	printf("******* \n");
 	printf("   |\n");
 	printf("\n");
-	printf("Feliz Natal e um ótimo ano novo!! Aceitamos nota de presente ou um vale refeição.\n");
-		
+			
 	while(verif != 99){
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
@@ -83,32 +82,33 @@ if (cl[i].cli_id== 0) {
 						
 					
 						
-						printf("==================================================\n");
+						system("@cls||clear");						printf("==================================================\n");
 						printf("Cliente cadastrado com sucesso.\n");
 						break;
 						case 2:
-
-								while(verif != 99){
+						system("@cls||clear");
+						while(verif != 99){
 						verif = 0;
 						
 						printf("==================================================\n");
-						printf("Digite 1 para informar o ID do cliente a ser editado\n");
-						printf("Digite 2 para pesquisar cliente para iditar\n");
-						printf("Digite 99 para voltar\n");
+						printf("1 - Informar o id do cliente a ser editado;\n");
+						printf("2 - Pesquisar o nome do cliente a ser editado;\n");
+						printf("99 - Voltar;\n");
 						printf("==================================================\n");
 						scanf("%d", &verif);
 					switch(verif){
 							case 1:
-						
-						printf("Digite numero do ID do cliente\n");
+						system("@cls||clear");
+						printf("Digite o numero do id do cliente: ");
 						scanf("%d", &id);
 						editC(id);
 
 
 							break;
 							case 2:
+							system("@cls||clear");
 							j=0;
-								printf("digite o para busca ");
+								printf("Digite para a busca: ");
 						scanf("%s", txc);
 						j=buscaC(txc);
 						if(j!=0){
@@ -146,7 +146,7 @@ if (cl[i].cli_id== 0) {
 						break;
 						case 3:
 						system("@cls||clear");
-						printf("digite o para busca ");
+						printf("Digite para a busca: ");
 						scanf("%s", txc);
 						buscaC(txc);
 						break;
@@ -227,7 +227,7 @@ if (fl[i].fil_id== 0) {
 					scanf("%d",&fl[i].fil_qtd_disponivel);		
 					writeFilmes();
 					i=101;
-					printf("==================================================\n");
+					system("@cls||clear");				printf("==================================================\n");
 					printf("Filme cadastrado com sucesso.\n");
 
 }else{
@@ -237,27 +237,29 @@ if (fl[i].fil_id== 0) {
 
 						break;
 						case 2:
+						system("@cls||clear");
 						while(verif != 99){
 						verif = 0;
 						
 						printf("==================================================\n");
-						printf("Digite 1 para informar o ID do filme a ser editado\n");
-						printf("Digite 2 para pesquisar um filme para iditar\n");
-						printf("Digite 99 para voltar\n");
+						printf("1 - Informar o id do filme a ser editado;\n");
+						printf("2 - Pesquisar o nome do filme a ser editado;\n");
+						printf("99 - Voltar;\n");
 						printf("==================================================\n");
 						scanf("%d", &verif);
 					switch(verif){
 							case 1:
-						
-						printf("Digite numero do ID do filme\n");
+						system("@cls||clear");
+						printf("Digite o numero do id do filme: ");
 						scanf("%d", &id);
 						editF(id);
 
 
 							break;
 							case 2:
+							system("@cls||clear");
 							j=0;
-								printf("digite o para busca ");
+								printf("Digite para a busca: ");
 						scanf("%s", txc);
 						j=buscaF(txc);
 						if(j!=0){
@@ -292,7 +294,7 @@ if (fl[i].fil_id== 0) {
 						break;
 						case 3:
 						system("@cls||clear");
-						printf("digite o para busca ");
+						printf("Digite para a busca: ");
 						scanf("%s", txc);
 						buscaF(txc);
 						break;
@@ -304,7 +306,7 @@ if (fl[i].fil_id!=0){
 
 
 								printf("==================================================\n");
-							printf("Nome do FILME %s", fl[i].fil_nome);
+							printf("FILME %s", fl[i].fil_nome);
 							printf("ID: %d\n", fl[i].fil_id);
 							printf("SINOPSE: %s", fl[i].fil_sinopses);
 							printf("Quantidade Disponivel em estoque: %d\n\n", fl[i].fil_qtd_disponivel);				
