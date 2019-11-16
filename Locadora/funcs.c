@@ -9,17 +9,34 @@
     #include <string.h>
 
 
+void exibeData(int idc){
 
 
-void printC(int idc){
+
+
+printf("\nData ........: %d/",cp[idc].dia_compra);
+  printf("%d/",cp[idc].mes_compra); //mês
+  printf("%d\n\n",cp[idc].ano_compra); //ano
+
+
+
+}
+
+
+void mostraC(int idc){
  
+
+ if(cl[idc].cli_id==0){
+
+     printf("\nid invalido!\n");
+ }else{
 printf("\n");
 printf("=====Dados do cliente=====\n");  
 printf("CLIENTE: %s", cl[idc].cli_nome);
 printf("ID: %ld\n", cl[idc].cli_id);
 printf("CPF: %ld\n", cl[idc].cli_cpf);
 printf("ENDEREÇO: %s\n", cl[idc].cli_endereco);
-
+ }
 }
 
 
@@ -57,7 +74,7 @@ printf("\nID não encontrado!\n\n");
  return 0;
    }else{
 
- printC(item);
+ mostraC(item);
 
    }
    
@@ -67,7 +84,7 @@ printf("\nID não encontrado!\n\n");
 }
 
 
-void printF(int idf){
+void exibeF(int idf){
  
 printf("\n");
 printf("=====Dados do filme=====\n"); 
@@ -197,7 +214,7 @@ printf("\nID não encontrado!\n\n");
  return 0;
    }else{
 
- printF(item);
+ exibeF(item);
 
    }
    
@@ -277,3 +294,121 @@ void writeFilmes(void)
 
 }
  
+void loadLocacao()
+{
+
+    int red;
+    red = open("BancoLoca.txt", O_RDWR|O_CREAT, 0666);
+
+   
+
+        if(red < 0){
+            printf("ERROR\n");
+        }
+
+    read(red, &cp, sizeof(struct locacao) * 1000);
+    close(red);
+}
+void writeLocacao(void)
+{
+
+    int red;
+    red = open("BancoLoca.txt", O_RDWR|O_CREAT, 0666);
+
+   
+
+        if(red < 0){
+            printf("ERROR\n");
+        }
+
+    write(red,&cp, sizeof(struct locacao) * 1000);
+    close(red);
+
+}
+
+
+
+
+int dataCompra(int idc){
+ int i;   
+struct tm *data_hora_atual; 
+time_t segundos;
+time(&segundos); 
+data_hora_atual = localtime(&segundos);
+
+if(cp[idc].spc == 0 || (cp[idc].dia_compra == data_hora_atual->tm_mday && cp[idc].mes_compra == data_hora_atual->tm_mon+1 && cp[idc].ano_compra==data_hora_atual->tm_year+1900)){
+cp[idc].dia_compra=data_hora_atual->tm_mday;
+cp[idc].mes_compra=data_hora_atual->tm_mon+1;
+cp[idc].ano_compra=data_hora_atual->tm_year+1900;
+cp[idc].spc=1;
+exibeData(idc);
+return 0;
+i=101;
+}
+else{
+
+printf("Cliente não pode locar mais filmes.\n");
+printf("Motivo: Divida pendente.");
+return 1;
+}
+
+}
+
+
+
+
+
+
+
+int locacaoCliente(int idc, int idf){
+int i;
+
+
+
+for(i=1; i<100; i++){
+
+    if (cp[idc].locaF[i]==0){
+cp[idc].locaF[i]=idf;
+
+
+i=101;
+
+return i;
+
+
+    }else{}
+
+
+}
+
+}
+void testePrinta(int idc, int idf){
+int i;
+
+
+for(i=1; i<100; i++){
+ if (cp[idc].locaF[i]!=0){
+
+printf("%d",i);
+printf("\n\n\n%d   --------  %d\n\n\n",idc, cp[idc].locaF[i]);
+
+
+
+
+
+    }else{i=101;}
+
+
+
+
+
+
+
+    
+}
+
+
+
+
+
+}

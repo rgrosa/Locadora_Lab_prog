@@ -8,10 +8,10 @@
 void main(){
 	int verif = 0;
 	char val;
-	int i,j,id;
+	int i,j,id,idcl,idfl,ver;
 	char txc[10];
 
-
+loadLocacao();
 loadFilmes();
 	system("@cls||clear");
 
@@ -337,16 +337,205 @@ if (fl[i].fil_id!=0){
 							printf("==================================================\n");
 							printf("Escolha uma opção:\n");
 							printf("1 - Locar filme;\n");
-							printf("2 - Gerar relatório;\n");
+							printf("2 - Pagamentos;\n");
+							printf("3 - Cancelamento;\n");	
+							printf("4 - Gerar relatório;\n");
 							printf("99 - Voltar;\n");
 							printf("==================================================\n");
 							scanf("%d", &verif);
 					switch(verif){
-						case 1:
+				case 1:
 							
+
+
+verif = 0;	
+
+						while(verif != 99){
+						
+						
+						printf("==================================================\n");
+						printf("1 - Informar o id do cliente que irá realizar a Locação;\n");
+						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar a locação;\n");
+						printf("99 - Voltar;\n");
+						printf("==================================================\n");
+						scanf("%d", &verif);
+						val=1;
+						if(verif==2){
+							verif=1;
+							val=2;
+						}
+					switch(verif){
+							case 1:
+							if(val==1){
+						system("@cls||clear");
+						printf("Digite o numero do id do cliente: ");
+						scanf("%d", &idcl);
+							}
+							else{
+
+	system("@cls||clear");
+							idcl=0;
+								printf("Digite para a busca: ");
+						scanf("%s", txc);
+						idcl=buscaC(txc);
+						if(idcl==0){
+
+							verif=99;
+							break;
+						}
+						
+
+
+							}
+						 mostraC(idcl);
+						 
+						 ver=dataCompra(idcl);
+						 if(ver==1){
+						 
+						 verif=99;
+						 
+						 }
+
+if (cl[idcl].cli_id!=0){
+
+
+
+						
+						while(verif != 99){
+						verif = 0;
+					
+						printf("==================================================\n");
+						printf("1 - Informar o id do filme a ser locado;\n");
+						printf("2 - Pesquisar id do filme pelo seu nome ;\n");
+						printf("99 - Voltar;\n");
+						printf("==================================================\n");
+						scanf("%d", &verif);
+						val=1;
+						if(verif==2){
+							verif=1;
+							val=2;
+
+						}
+					switch(verif){
+							case 1:
+							if(val==1){
+						system("@cls||clear");
+						printf("Digite o numero do id do filme: ");
+						scanf("%d", &idfl);}
+						else{
+
+						system("@cls||clear");
+							idfl=0;
+								printf("Digite para a busca: ");
+						scanf("%s", txc);
+						idfl=buscaF(txc);
+						if(idfl==0){
+
+							verif=99;
+							break;
+						}
+						
+
+
+						}
+						exibeF(idfl);
+if(fl[idfl].fil_qtd_disponivel-1<0){
+	
+
+printf("Filme indisponivel no momento!\n");
+
+}else{
+				locacaoCliente(idcl, idfl);
+		
+					
+							printf("Filme Locado com Sucesso!\n");
+							fl[idfl].fil_qtd_disponivel--;
+
+
+							writeLocacao();
+							writeFilmes();
+							writeClientes();
+			
+
+}
+
+
+
+
+
+
+
+
+							break;
+					
+					case 99:
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Voltando...\n");
+							
+					break;
+				default:
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Opção inválida, digite novamente!\n");
+							
+							break;
+					}
+					
+					
+						}
+}
+
+
+
+
+
+
+
+
+
+							break;
+							case 2:
+							system("@cls||clear");
+							j=0;
+								printf("Digite para a busca: ");
+						scanf("%s", txc);
+					
+						
+						
+						
+							break;
+					case 99:
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Voltando...\n");
+							
+					break;
+				default:
+						system("@cls||clear");
+						printf("==================================================\n");
+						printf("Opção inválida, digite novamente!\n");
+							
+							break;
+					
+					
+					
+					}}
+
+
+
+
+
+
+
 						break;
 						case 2:
-							system("@cls||clear");
+						
+						break;
+					case 3:
+					break;
+					case 4:
+						system("@cls||clear");
 							printf("==================================================\n");
 							printf("Gerar PDF?\n");
 							printf("1 - Sim;\n");
@@ -356,7 +545,7 @@ if (fl[i].fil_id!=0){
 							if(verif == 1){
 								
 							}
-						break;
+					break;
 						case 99:
 							system("@cls||clear");
 							printf("==================================================\n");
@@ -388,3 +577,11 @@ if (fl[i].fil_id!=0){
 		}
 	}
 }
+
+
+
+
+
+
+
+
