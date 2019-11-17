@@ -3,7 +3,7 @@
     struct cliente{
 		long int cli_id,cli_idade,cli_cpf;
 		char cli_nome[100],cli_endereco[500];
-			
+			float saldo;
 	};
 
 	struct filme{
@@ -16,8 +16,10 @@
 	int locaF[100];
 
 			int dia_compra,mes_compra,ano_compra;
+			int dia_est,mes_est,ano_est;
 	
 int spc;
+float saldo;
 	};
 
 	struct caixa{
@@ -44,15 +46,18 @@ struct caixa cx;
 	void loadLocacao (void);
 	void loadClientes(void);
 	void writeCaixa(void);
-	int locacaoCliente(int idc, int idf);
+	void locacaoCliente(int idc, int idf);
 	int buscaC(char busc[]);
 	int buscaF(char busc[]);
 	void editF(int idf);
 	void editC(int idc);
 	void exibeData(int idc);
-	void exibeF(int idf);
-	int dataCompra(int idc);
 	void mostraC(int idc);
 	void testePrinta(int idc, int idf);
 	int cancelaCompra(int idc);
 	int quantidadeLocada(int idc);
+	int calculaDia(int idc);
+	void exibeDataEntrega(int idc);
+	void entregaFilme(int idc);
+	int dataCompra(int idc);
+	void exibeF(int idf);

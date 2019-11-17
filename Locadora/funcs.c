@@ -22,6 +22,20 @@ printf("\nData ........: %d/",cp[idc].dia_compra);
 
 }
 
+void exibeDataEntrega(int idc){
+
+
+
+
+printf("\nData ........: %d/",cp[idc].dia_est);
+  printf("%d/",cp[idc].mes_est); //mês
+  printf("%d\n\n",cp[idc].ano_est); //ano
+
+
+
+}
+
+
 
 void mostraC(int idc){
  
@@ -391,8 +405,10 @@ return 1;
 
 
 
-int locacaoCliente(int idc, int idf){
-int i;
+void locacaoCliente(int idc, int idf){
+int i,x,conf,j,p;
+
+float result;
 
 
 
@@ -400,17 +416,80 @@ for(i=1; i<100; i++){
 
     if (cp[idc].locaF[i]==0){
 cp[idc].locaF[i]=idf;
-
+fl[idf].fil_qtd_disponivel--;
 
 i=101;
 
-return i;
+
 
 
     }else{}
 
 
 }
+
+struct tm *data_hora_atual; 
+time_t segundos;
+time(&segundos); 
+data_hora_atual = localtime(&segundos);
+cp[idc].dia_compra=data_hora_atual->tm_mday;
+cp[idc].mes_compra=data_hora_atual->tm_mon+1;
+cp[idc].ano_compra=data_hora_atual->tm_year+1900;
+
+
+
+if(cp[idc].dia_est==0){
+printf("\nDigite a data correspondente a devolução do filme\n");
+printf("\nDia:");
+scanf("%d",&cp[idc].dia_est);
+printf("\nMes:");
+scanf("%d",&cp[idc].mes_est);
+printf("\nAno:");
+scanf("%d",&cp[idc].ano_est);
+}
+else{
+
+exibeDataEntrega(idc);
+
+
+}
+x=calculaDia(idc);
+
+
+
+result=4+(1.5*x);
+result=result-1.5;
+printf("Valor total da compra %.2f\n", result);
+printf("Deseja Confirmar?\n");
+printf("1 -para SIM\n");
+printf("2 - para NÃO\n");
+scanf("%d",&conf);
+
+if(conf==1){
+
+cx.pagamento=result;
+cx.saldo=cx.saldo+result;
+
+		printf("Filme Locado com Sucesso!\n");
+							
+    
+}else{
+
+printf("Operação cancelada ou falhou");
+fl[idf].fil_qtd_disponivel++;
+cp[idc].dia_compra=0;
+cp[idc].mes_compra=0;
+cp[idc].ano_compra=0;
+cp[idc].dia_est=0;
+cp[idc].mes_est=0;
+cp[idc].ano_est=0;
+}
+
+writeClientes();
+writeFilmes();
+writeLocacao();
+
+
 
 }
 void testePrinta(int idc, int idf){
@@ -480,7 +559,101 @@ cont++;
 
 return cont;
 }
+int calculaDia(int idc){
+
+
+ int q,w,z,ano;
+
+
+q = cp[idc].dia_est - cp[idc].dia_compra;
+w = cp[idc].mes_est - cp[idc].mes_compra;
+ano = cp[idc].ano_est - cp[idc].ano_compra;
+
+
+z= ano * 365;
+w = (w*30) + q + z;
+
+
+return w;
+}
+
+
+void entregaFilme(int idc){
+
+struct tm *data_hora_atual; 
+time_t segundos;
+time(&segundos); 
+data_hora_atual = localtime(&segundos);
+ int q,w,z,x,ano;
+int j,k;
+float resto;
+ x=calculaDia(idc);//30
+
+
+q = data_hora_atual->tm_mday - cp[idc].dia_est;
+w = data_hora_atual->tm_mon+1 - cp[idc].mes_est;
+ano= data_hora_atual->tm_year+1900 - cp[idc].ano_est ;
+z= ano * 365;
+w = w*30 + q + z;
+
+
+resto=w+x;
+printf("RESTO %.2f", resto);
+if(resto<1){
+
+
+for(k=1; k<100; k++){
+if (cp[idc].locaF[k]!=0){
+j=cp[idc].locaF[k];
+
+fl[j].fil_qtd_disponivel++;
+
+}
+cp[idc].locaF[k]=0;
+}
+cp[idc].dia_compra=0;
+cp[idc].mes_compra=0;
+cp[idc].ano_compra=0;
+cp[idc].dia_est=0;
+cp[idc].mes_est=0;
+cp[idc].ano_est=0;
 
 
 
 
+}else if (resto>=1){
+resto=(1.9*resto);
+printf("Produto devolvido com atraso\n");
+printf("Preço da multa: R$ %.2f\n\n", resto);
+
+cx.saldo+resto;}
+
+
+for(k=1; k<100; k++){
+if (cp[idc].locaF[k]!=0){
+j=cp[idc].locaF[k];
+
+fl[j].fil_qtd_disponivel++;
+
+}
+cp[idc].locaF[k]=0;
+}
+cp[idc].dia_compra=0;
+cp[idc].mes_compra=0;
+cp[idc].ano_compra=0;
+cp[idc].dia_est=0;
+cp[idc].mes_est=0;
+cp[idc].ano_est=0;
+
+cp[idc].spc=0;
+writeClientes();
+writeFilmes();
+writeLocacao();
+
+
+
+printf("\nProduto devolvido com sucesso\n");
+
+
+
+}

@@ -8,7 +8,8 @@
 void main(){
 	int verif = 0;
 	char val;
-	int i,j,id,idcl,idfl,ver;
+	int i,j,id,idcl,idfl,ver,saldo;
+
 	char txc[10];
 float pg;
 loadLocacao();
@@ -29,6 +30,7 @@ loadFilmes();
 	while(verif != 99){
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
+		printf("%.2f", cx.saldo);
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
 		printf("3 - Locação;\n");
@@ -337,7 +339,7 @@ if (fl[i].fil_id!=0){
 							printf("==================================================\n");
 							printf("Escolha uma opção:\n");
 							printf("1 - Locar filme;\n");
-							printf("2 - Pagamentos;\n");
+							printf("2 - Entrega Filme;\n");
 							printf("3 - Cancelamento;\n");	
 							printf("4 - Gerar relatório;\n");
 							printf("99 - Voltar;\n");
@@ -438,18 +440,20 @@ if (cl[idcl].cli_id!=0){
 
 
 						}
-						exibeF(idfl);
+exibeF(idfl);
 if(fl[idfl].fil_qtd_disponivel-1<0){
 	
 
 printf("Filme indisponivel no momento!\n");
 
 }else{
+
+
 				locacaoCliente(idcl, idfl);
 		
+						
 					
-							printf("Filme Locado com Sucesso!\n");
-							fl[idfl].fil_qtd_disponivel--;
+					
 
 
 							writeLocacao();
@@ -541,8 +545,8 @@ verif = 0;
 						
 						
 						printf("==================================================\n");
-						printf("1 - Informar o id do cliente que irá realizar o pagamento;\n");
-						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar o pagamento;\n");
+						printf("1 - Informar o id do cliente que irá realizar a devolução do filme;\n");
+						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar a devolução do filme;\n");
 						printf("99 - Voltar;\n");
 						printf("==================================================\n");
 						scanf("%d", &verif);
@@ -572,53 +576,12 @@ verif = 0;
 						}
 							}
 
-struct tm *data_hora_atual; 
-time_t segundos;
-time(&segundos); 
-data_hora_atual = localtime(&segundos);
-
-if(cp[idcl].dia_compra == data_hora_atual->tm_mday && cp[idcl].mes_compra == data_hora_atual->tm_mon+1 && cp[idcl].ano_compra==data_hora_atual->tm_year+1900)
-{
-	pg=quantidadeLocada(idcl);
-printf("\nSaldo devedor: %.2f\n", (pg*3));
-printf("Confirmar pagamento?\n");
-printf("1 para SIM\n");
-printf("2 para não\n");
-scanf("%d", &ver);
-if(ver==1){
-
-printf("\nDivida paga com sucesso\n");
-cancelaCompra(idcl);
-
-cx.pagamento=3*pg;
-cx.saldo=cx.saldo+cx.pagamento;
-
-printf("SALDO TOTAL %.2f\n",cx.saldo);
-writeLocacao();
-writeClientes();
-writeFilmes();
-}if(ver==2){
-
-printf("\n\nSolicitação de pagamento cancelada!\n");
-verif=99;
-
 }
-}else{system("@cls||clear");
-						printf("==================================================\n");
-						printf("Opção inválida!\n");}
 
 
+entregaFilme(idcl);
 
-
-
-
-
-						break;}}
-
-
-
-
-
+						}
 
 						
 						break;
@@ -698,6 +661,9 @@ break;
 							scanf("%d", &verif);
 							if(verif == 1){
 								cx.saldo=0;
+								writeClientes();
+writeFilmes();
+writeLocacao();
 							}
 					break;
 						case 99:
