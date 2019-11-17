@@ -13,7 +13,11 @@ Dentro da pasta do arquivo
 #LIMPAR 
 
 <make clean>
+ 
+#TXT para PDF#
 
+system("libreoffice --convert-to 'pdf' nomeDoAquirvo.txt");
+							
 #Comandos Git:#
 
 linkar oo arquivo < git clone <LINK DO GIT> <CRIAR NOME DA PASTA DO ARQUIVO> (clone or download)>
