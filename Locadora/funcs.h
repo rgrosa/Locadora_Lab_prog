@@ -14,23 +14,36 @@
 	struct locacao{
 
 	int locaF[100];
-		int loc_id[100], loc_cliId[100], loc_filId[100];
+
 			int dia_compra,mes_compra,ano_compra;
-		int dia_devol[100],mes_devol[100],ano_devol[100];
+	
 int spc;
 	};
+
+	struct caixa{
+
+	float saldo, pagamento, aReceber;
+
+
+
+
+
+	};
+
 struct filme fl[100];
 struct cliente cl[100];
 struct locacao cp[100];
-
+struct caixa cx;
 
 
 	void writeFilmes(void);
 	void writeClientes(void);
 	void writeLocacao(void);
+	void loadCaixa(void);
 	void loadFilmes(void);
 	void loadLocacao (void);
 	void loadClientes(void);
+	void writeCaixa(void);
 	int locacaoCliente(int idc, int idf);
 	int buscaC(char busc[]);
 	int buscaF(char busc[]);
@@ -41,3 +54,5 @@ struct locacao cp[100];
 	int dataCompra(int idc);
 	void mostraC(int idc);
 	void testePrinta(int idc, int idf);
+	int cancelaCompra(int idc);
+	int quantidadeLocada(int idc);

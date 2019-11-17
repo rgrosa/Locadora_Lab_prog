@@ -10,7 +10,7 @@ void main(){
 	char val;
 	int i,j,id,idcl,idfl,ver;
 	char txc[10];
-
+float pg;
 loadLocacao();
 loadFilmes();
 	system("@cls||clear");
@@ -406,7 +406,7 @@ if (cl[idcl].cli_id!=0){
 					
 						printf("==================================================\n");
 						printf("1 - Informar o id do filme a ser locado;\n");
-						printf("2 - Pesquisar id do filme pelo seu nome ;\n");
+						printf("2 - Pesquisar id do filme pelo nome ;\n");
 						printf("99 - Voltar;\n");
 						printf("==================================================\n");
 						scanf("%d", &verif);
@@ -530,10 +530,164 @@ printf("Filme indisponivel no momento!\n");
 
 						break;
 						case 2:
+
+
+
+
+
+verif = 0;	
+
+						while(verif != 99){
+						
+						
+						printf("==================================================\n");
+						printf("1 - Informar o id do cliente que irá realizar o pagamento;\n");
+						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar o pagamento;\n");
+						printf("99 - Voltar;\n");
+						printf("==================================================\n");
+						scanf("%d", &verif);
+						val=1;
+						if(verif==2){
+							verif=1;
+							val=2;
+						}
+					switch(verif){
+							case 1:
+							if(val==1){
+						system("@cls||clear");
+						printf("Digite o numero do id do cliente: ");
+						scanf("%d", &idcl);
+							}
+							else{
+
+	system("@cls||clear");
+							idcl=0;
+								printf("Digite para a busca: ");
+						scanf("%s", txc);
+						idcl=buscaC(txc);
+						if(idcl==0){
+
+							verif=99;
+							break;
+						}
+							}
+
+struct tm *data_hora_atual; 
+time_t segundos;
+time(&segundos); 
+data_hora_atual = localtime(&segundos);
+
+if(cp[idcl].dia_compra == data_hora_atual->tm_mday && cp[idcl].mes_compra == data_hora_atual->tm_mon+1 && cp[idcl].ano_compra==data_hora_atual->tm_year+1900)
+{
+	pg=quantidadeLocada(idcl);
+printf("\nSaldo devedor: %.2f\n", (pg*3));
+printf("Confirmar pagamento?\n");
+printf("1 para SIM\n");
+printf("2 para não\n");
+scanf("%d", &ver);
+if(ver==1){
+
+printf("\nDivida paga com sucesso\n");
+cancelaCompra(idcl);
+
+cx.pagamento=3*pg;
+cx.saldo=cx.saldo+cx.pagamento;
+
+printf("SALDO TOTAL %.2f\n",cx.saldo);
+writeLocacao();
+writeClientes();
+writeFilmes();
+}if(ver==2){
+
+printf("\n\nSolicitação de pagamento cancelada!\n");
+verif=99;
+
+}
+}else{system("@cls||clear");
+						printf("==================================================\n");
+						printf("Opção inválida!\n");}
+
+
+
+
+
+
+
+						break;}}
+
+
+
+
+
+
 						
 						break;
 					case 3:
-					break;
+
+
+
+
+verif = 0;	
+
+						while(verif != 99){
+						
+						
+						printf("==================================================\n");
+						printf("1 - Informar o id do cliente que irá realizar o cancelamento;\n");
+						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar o cancelamento;\n");
+						printf("99 - Voltar;\n");
+						printf("==================================================\n");
+						scanf("%d", &verif);
+						val=1;
+						if(verif==2){
+							verif=1;
+							val=2;
+						}
+					switch(verif){
+							case 1:
+							if(val==1){
+						system("@cls||clear");
+						printf("Digite o numero do id do cliente: ");
+						scanf("%d", &idcl);
+							}
+							else{
+
+	system("@cls||clear");
+							idcl=0;
+								printf("Digite para a busca: ");
+						scanf("%s", txc);
+						idcl=buscaC(txc);
+						if(idcl==0){
+
+							verif=99;
+							break;
+						}
+						
+
+
+							}
+							struct tm *data_hora_atual; 
+time_t segundos;
+time(&segundos); 
+data_hora_atual = localtime(&segundos);
+
+if(cp[idcl].dia_compra == data_hora_atual->tm_mday && cp[idcl].mes_compra == data_hora_atual->tm_mon+1 && cp[idcl].ano_compra==data_hora_atual->tm_year+1900)
+{
+
+
+cancelaCompra(idcl);
+printf("\n\nCancelamento Realizado com sucesso\n\n");
+writeLocacao();
+writeClientes();
+writeFilmes();
+
+}else{printf("\n\nCancelamento Indisponivel!\n");}
+
+break;
+
+default:
+					break;}}
+break;
 					case 4:
 						system("@cls||clear");
 							printf("==================================================\n");
@@ -543,7 +697,7 @@ printf("Filme indisponivel no momento!\n");
 							printf("==================================================\n");
 							scanf("%d", &verif);
 							if(verif == 1){
-								
+								cx.saldo=0;
 							}
 					break;
 						case 99:
@@ -574,11 +728,78 @@ printf("Filme indisponivel no momento!\n");
 							printf("Opção inválida, digite novamente!\n");
 				
 			break;
+
+
+verif = 0;	
+
+						while(verif != 99){
+						
+						
+						printf("==================================================\n");
+						printf("1 - Informar o id do cliente que irá realizar o cancelamento;\n");
+						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar o cancelamento;\n");
+						printf("99 - Voltar;\n");
+						printf("==================================================\n");
+						scanf("%d", &verif);
+						val=1;
+						if(verif==2){
+							verif=1;
+							val=2;
+						}
+					switch(verif){
+							case 1:
+							if(val==1){
+						system("@cls||clear");
+						printf("Digite o numero do id do cliente: ");
+						scanf("%d", &idcl);
+							}
+							else{
+
+	system("@cls||clear");
+							idcl=0;
+								printf("Digite para a busca: ");
+						scanf("%s", txc);
+						idcl=buscaC(txc);
+						if(idcl==0){
+
+							verif=99;
+							break;
+						}
+						
+
+
+							}
+							struct tm *data_hora_atual; 
+time_t segundos;
+time(&segundos); 
+data_hora_atual = localtime(&segundos);
+
+if(cp[idcl].dia_compra == data_hora_atual->tm_mday && cp[idcl].mes_compra == data_hora_atual->tm_mon+1 && cp[idcl].ano_compra==data_hora_atual->tm_year+1900)
+{
+
+
+cancelaCompra(idcl);
+printf("\n\nCancelamento Realizado com sucesso\n\n");
+writeLocacao();
+writeClientes();
+writeFilmes();
+
+}else{printf("\n\nCancelamento Indisponivel!\n");}
+
+
+					break;
 		}
+	}verif=0;
+		}
+
+	
+
+
+
 	}
+
+
 }
-
-
 
 
 
