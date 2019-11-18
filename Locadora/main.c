@@ -32,7 +32,6 @@ loadCaixa();
 	while(verif != 99){
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
-		printf("%.2f", cx[1].saldo);
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
 		printf("3 - Locação;\n");
@@ -343,6 +342,7 @@ if (fl[i].fil_id!=0){
 							printf("1 - Locar filme;\n");
 							printf("2 - Entrega Filme;\n");
 							printf("3 - Gerar relatório;\n");
+							printf("4 - Caixa;\n");
 							printf("99 - Voltar;\n");
 							printf("==================================================\n");
 							scanf("%d", &verif);
@@ -598,10 +598,23 @@ break;}
 							if(verif == 1){
 								cx[1].saldo=0.000;
 								writeClientes();
-writeFilmes();
-writeLocacao();
+								writeFilmes();
+								writeLocacao();
+								system("libreoffice --convert-to 'pdf' BancoC.txt");
+								system("libreoffice --convert-to 'pdf' BancoF.txt");
 							}
 					break;
+						case 4:
+						system("@cls||clear");
+						printf("==================================================\n"); 
+						printf("CAIXA;\n");
+						printf("R$%.2f\n", cx[1].saldo);
+printf("==================================================\n");
+						printf("\nDigite qualquer numero para voltar;\n");
+						scanf("%d", &verif);
+								
+						break;
+
 						case 99:
 							system("@cls||clear");
 							printf("==================================================\n");
