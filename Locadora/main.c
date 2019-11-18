@@ -32,7 +32,7 @@ loadCaixa();
 	while(verif != 99){
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
-		printf("%.2f\n", cx[1].saldo);
+		printf("%.2f", cx[1].saldo);
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
 		printf("3 - Locação;\n");
@@ -342,8 +342,7 @@ if (fl[i].fil_id!=0){
 							printf("Escolha uma opção:\n");
 							printf("1 - Locar filme;\n");
 							printf("2 - Entrega Filme;\n");
-							printf("3 - Cancelamento;\n");	
-							printf("4 - Gerar relatório;\n");
+							printf("3 - Gerar relatório;\n");
 							printf("99 - Voltar;\n");
 							printf("==================================================\n");
 							scanf("%d", &verif);
@@ -588,73 +587,7 @@ break;}
 
 						
 						break;
-					case 3:
-
-
-
-
-verif = 0;	
-
-						while(verif != 99){
-						
-						
-						printf("==================================================\n");
-						printf("1 - Informar o id do cliente que irá realizar o cancelamento;\n");
-						printf("2 - Pesquisar o id do cliente pelo seu nome para realizar o cancelamento;\n");
-						printf("99 - Voltar;\n");
-						printf("==================================================\n");
-						scanf("%d", &verif);
-						val=1;
-						if(verif==2){
-							verif=1;
-							val=2;
-						}
-					switch(verif){
-							case 1:
-							if(val==1){
-						system("@cls||clear");
-						printf("Digite o numero do id do cliente: ");
-						scanf("%d", &idcl);
-							}
-							else{
-
-	system("@cls||clear");
-							idcl=0;
-								printf("Digite para a busca: ");
-						scanf("%s", txc);
-						idcl=buscaC(txc);
-						if(idcl==0){
-
-							verif=99;
-							break;
-						}
-						
-
-
-							}
-							struct tm *data_hora_atual; 
-time_t segundos;
-time(&segundos); 
-data_hora_atual = localtime(&segundos);
-
-if(cp[idcl].dia_compra == data_hora_atual->tm_mday && cp[idcl].mes_compra == data_hora_atual->tm_mon+1 && cp[idcl].ano_compra==data_hora_atual->tm_year+1900)
-{
-
-
-cancelaCompra(idcl);
-printf("\n\nCancelamento Realizado com sucesso\n\n");
-writeLocacao();
-writeClientes();
-writeFilmes();
-
-}else{printf("\n\nCancelamento Indisponivel!\n");}
-
-break;
-
-default:
-					break;}}
-break;
-					case 4:
+			case 3:
 						system("@cls||clear");
 							printf("==================================================\n");
 							printf("Gerar PDF?\n");
@@ -663,12 +596,10 @@ break;
 							printf("==================================================\n");
 							scanf("%d", &verif);
 							if(verif == 1){
-								cx[1].saldo=0;
+								cx[1].saldo=0.000;
 								writeClientes();
 writeFilmes();
 writeLocacao();
-							system("libreoffice --convert-to 'pdf' BancoC.txt");//precisa ter libreoffice
-							system("libreoffice --convert-to 'pdf' BancoF.txt");
 							}
 					break;
 						case 99:

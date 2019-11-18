@@ -394,6 +394,12 @@ else{
 
 printf("Cliente não pode locar mais filmes.\n");
 printf("Motivo: Divida pendente.\n");
+
+
+
+
+
+
 return 1;
 }
 
@@ -489,6 +495,7 @@ cp[idc].ano_compra=0;
 cp[idc].dia_est=0;
 cp[idc].mes_est=0;
 cp[idc].ano_est=0;
+cp[idc].spc=0;
 }
 
 writeClientes();
@@ -537,7 +544,7 @@ for(i=1; i<100; i++){
 if (cp[idc].locaF[i]!=0){
 j=cp[idc].locaF[i];
 
-fl[j].fil_qtd_disponivel++;
+
 cont++;
 }
 cp[idc].locaF[i]=0;
@@ -585,7 +592,10 @@ return w;
 
 
 void entregaFilme(int idc){
+if(cp[idc].dia_compra==0){
+printf("\nO usuario informado não possui nenhuma pendencia com a locadora\n\n");
 
+}else{
 struct tm *data_hora_atual; 
 time_t segundos;
 time(&segundos); 
@@ -613,8 +623,8 @@ w = w*30 + q + z;
 
 resto=w+x;
 printf("RESTO %.2f", resto);
-printf("X - > %.2f",x);
-printf("W - > %.2f",w);
+printf("X - > %.2d",x);
+printf("W - > %.2d",w);
 printf("%d", cp[idc].dia_est);
 if(resto<1){
 
@@ -639,6 +649,7 @@ cp[idc].ano_est=0;
 
 
 }else if (resto>=1){
+    resto=resto-(w-x);
 resto=(1.9*resto);
 printf("Produto devolvido com atraso\n");
 printf("Preço da multa: R$ %.2f\n\n", resto);
@@ -646,10 +657,9 @@ cx[1].pagamento=resto;
 cx[1].saldo=cx[1].saldo+cx[1].pagamento;}
 
 
-for(k=1; k<100; k++){
+for(k=0; k<100; k++){
 if (cp[idc].locaF[k]!=0){
 j=cp[idc].locaF[k];
-
 fl[j].fil_qtd_disponivel++;
 
 }
@@ -663,6 +673,7 @@ cp[idc].mes_est=0;
 cp[idc].ano_est=0;
 
 cp[idc].spc=0;
+
 writeClientes();
 writeFilmes();
 writeLocacao();
@@ -673,4 +684,5 @@ printf("\nProduto devolvido com sucesso\n");
 
 
 
+}
 }
