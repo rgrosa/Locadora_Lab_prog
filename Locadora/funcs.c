@@ -446,6 +446,12 @@ printf("\nMes:");
 scanf("%d",&cp[idc].mes_est);
 printf("\nAno:");
 scanf("%d",&cp[idc].ano_est);
+writeCaixa();
+writeClientes();
+writeFilmes();
+writeLocacao();
+
+
 }
 else{
 
@@ -467,8 +473,8 @@ scanf("%d",&conf);
 
 if(conf==1){
 
-cx.pagamento=result;
-cx.saldo=cx.saldo+result;
+
+cx[1].saldo=cx[1].saldo+result;
 
 		printf("Filme Locado com Sucesso!\n");
 							
@@ -488,7 +494,7 @@ cp[idc].ano_est=0;
 writeClientes();
 writeFilmes();
 writeLocacao();
-
+writeCaixa();
 
 
 }
@@ -585,20 +591,31 @@ time_t segundos;
 time(&segundos); 
 data_hora_atual = localtime(&segundos);
  int q,w,z,x,ano;
-int j,k;
+int j,k,d,m,a;
 float resto;
- x=calculaDia(idc);//30
+ x=calculaDia(idc);
 
 
-q = data_hora_atual->tm_mday - cp[idc].dia_est;
-w = data_hora_atual->tm_mon+1 - cp[idc].mes_est;
-ano= data_hora_atual->tm_year+1900 - cp[idc].ano_est ;
+
+d=data_hora_atual->tm_mday;
+m=data_hora_atual->tm_mon+1;
+a=data_hora_atual->tm_year+1900;
+
+
+
+
+q =d-cp[idc].dia_est;
+w =   m-cp[idc].mes_est;
+ano=  a-cp[idc].ano_est;
 z= ano * 365;
 w = w*30 + q + z;
 
 
 resto=w+x;
 printf("RESTO %.2f", resto);
+printf("X - > %.2f",x);
+printf("W - > %.2f",w);
+printf("%d", cp[idc].dia_est);
 if(resto<1){
 
 
@@ -625,8 +642,8 @@ cp[idc].ano_est=0;
 resto=(1.9*resto);
 printf("Produto devolvido com atraso\n");
 printf("Preço da multa: R$ %.2f\n\n", resto);
-
-cx.saldo+resto;}
+cx[1].pagamento=resto;
+cx[1].saldo=cx[1].saldo+cx[1].pagamento;}
 
 
 for(k=1; k<100; k++){
@@ -649,7 +666,7 @@ cp[idc].spc=0;
 writeClientes();
 writeFilmes();
 writeLocacao();
-
+writeCaixa();
 
 
 printf("\nProduto devolvido com sucesso\n");

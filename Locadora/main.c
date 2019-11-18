@@ -8,12 +8,14 @@
 void main(){
 	int verif = 0;
 	char val;
-	int i,j,id,idcl,idfl,ver,saldo;
+	int i,j,id,idcl,idfl,ver;
 
 	char txc[10];
 float pg;
+cx[1].saldo=0;
 loadLocacao();
 loadFilmes();
+loadCaixa();
 	system("@cls||clear");
 
 	loadClientes();	
@@ -30,7 +32,7 @@ loadFilmes();
 	while(verif != 99){
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
-		printf("%.2f", cx.saldo);
+		printf("%.2f", cx[1].saldo);
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
 		printf("3 - Locação;\n");
@@ -575,11 +577,12 @@ verif = 0;
 							break;
 						}
 							}
-
-}
-
-
 entregaFilme(idcl);
+
+default:
+break;}
+
+
 
 						}
 
@@ -660,7 +663,7 @@ break;
 							printf("==================================================\n");
 							scanf("%d", &verif);
 							if(verif == 1){
-								cx.saldo=0;
+								cx[1].saldo=0;
 								writeClientes();
 writeFilmes();
 writeLocacao();

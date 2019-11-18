@@ -3,7 +3,7 @@
     struct cliente{
 		long int cli_id,cli_idade,cli_cpf;
 		char cli_nome[100],cli_endereco[500];
-			float saldo;
+		
 	};
 
 	struct filme{
@@ -19,7 +19,7 @@
 			int dia_est,mes_est,ano_est;
 	
 int spc;
-float saldo;
+
 	};
 
 	struct caixa{
@@ -35,7 +35,7 @@ float saldo;
 struct filme fl[100];
 struct cliente cl[100];
 struct locacao cp[100];
-struct caixa cx;
+struct caixa cx[2];
 
 
 	void writeFilmes(void);
