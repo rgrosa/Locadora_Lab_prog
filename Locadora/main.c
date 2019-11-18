@@ -32,7 +32,7 @@ loadCaixa();
 	while(verif != 99){
 		printf("==================================================\n");
 		printf("Escolha uma opção:\n");
-		printf("%.2f", cx[1].saldo);
+		printf("%.2f\n", cx[1].saldo);
 		printf("1 - Clientes;\n");
 		printf("2 - Filmes;\n");
 		printf("3 - Locação;\n");
@@ -667,6 +667,8 @@ break;
 								writeClientes();
 writeFilmes();
 writeLocacao();
+							system("libreoffice --convert-to 'pdf' BancoC.txt");//precisa ter libreoffice
+							system("libreoffice --convert-to 'pdf' BancoF.txt");
 							}
 					break;
 						case 99:
